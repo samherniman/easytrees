@@ -1,9 +1,10 @@
 Package: easytrees
-Title: What the Package Does (One Line, Title Case)
+Title: Load a simple lasR pipeline
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Sam", "Herniman", , "sam_j_h@zohomail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-7663-2897"))
+Description: Load a simple lasR pipeline.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
@@ -11,3 +12,10 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Imports: 
+    fs,
+    future,
+    lasR,
+    lidR,
+    sf,
+    terra
