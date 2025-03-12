@@ -22,14 +22,14 @@ create_pipeline <- function(output_dir) {
   del = lasR::triangulate(filter = lasR::keep_ground())
   dtm = lasR::rasterize(0.25, del, ofile = fs::path(output_dir, "dtm", "dtm.tif"))
   del2 = lasR::triangulate(filter = lasR::keep_first())
-  t_height = lasR::rasterize(c(2, 5), operators = "z_p95", ofile = fs::path(output_dir, "height_baba", "height_baba.tif"))
+  baba_ras = lasR::rasterize(c(2, 5), operators = c("z_p95", "z_above10", "z_above3"), ofile = fs::path(output_dir, "baba", "baba.tif"))
   chm = lasR::rasterize(0.5, del2)
   chm2 = lasR::pit_fill(chm, ofile = fs::path(output_dir, "chm", "chm.tif"))
 
   pipeline =
     gnd + write_gnd +
     del + dtm + norm_step + write_norm +
-    t_height +
+    baba_ras +
     del2 + chm + chm2
 
   return(pipeline)
